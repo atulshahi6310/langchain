@@ -1,0 +1,485 @@
+In statistics, linear regression is a model that estimates the relationship between a scalar response (dependent variable) and one or more explanatory variables (regressor or independent variable). A model with exactly one explanatory variable is a simple linear regression; a model with two or more explanatory variables is a multiple linear regression. This term is distinct from multivariate linear regression, which predicts multiple correlated dependent variables rather than a single dependent variable.
+In linear regression, the relationships are modeled using linear predictor functions whose unknown model parameters are estimated from the data. Most commonly, the conditional mean of the response given the values of the explanatory variables (or predictors) is assumed to be an affine function of those values; less commonly, the conditional median or some other quantile is used. Like all forms of regression analysis, linear regression focuses on the conditional probability distribution of the response given the values of the predictors, rather than on the joint probability distribution of all of these variables, which is the domain of multivariate analysis.
+Linear regression is also a type of machine learning algorithm, more specifically a supervised algorithm, that learns from the labelled datasets and maps the data points to the most optimized linear functions that can be used for prediction on new datasets.
+Linear regression was the first type of regression analysis to be studied rigorously, and to be used extensively in practical applications. This is because models which depend linearly on their unknown parameters are easier to fit than models which are non-linearly related to their parameters and because the statistical properties of the resulting estimators are easier to determine.
+Linear regression has many practical uses. Most applications fall into one of the following two broad categories:
+
+If the goal is to reduce error, i.e. variance in prediction or forecasting, linear regression can be used to fit a predictive model to an observed data set of values of the response and explanatory variables. After developing such a model, if additional values of the explanatory variables are collected without an accompanying response value, the fitted model can be used to make a prediction of the response.
+If the goal is to explain variation in the response variable that can be attributed to variation in the explanatory variables, linear regression analysis can be applied to quantify the strength of the relationship between the response and the explanatory variables, and in particular to determine whether some explanatory variables may have no linear relationship with the response at all, or to identify which subsets of explanatory variables may contain redundant information about the response.
+Linear regression models are often fitted using the least squares approach, but they may also be fitted in other ways, such as by minimizing the "lack of fit" in some other norm (as with least absolute deviations regression), or by minimizing a penalized version of the least squares cost function as in ridge regression (L2-norm penalty) and lasso (L1-norm penalty). Use of the Mean Squared Error (MSE) as the cost on a dataset that has many large outliers, can result in a model that fits the outliers more than the true data due to the higher importance assigned by MSE to large errors. So, cost functions that are robust to outliers should be used if the dataset has many large outliers. Conversely, the least squares approach can be used to fit models that are not linear models. Thus, although the terms "least squares" and "linear model" are closely linked, they are not synonymous.
+
+
+== Formulation ==
+
+Given a data set 
+  
+    
+      
+        {
+        
+          y
+          
+            i
+          
+        
+        ,
+        
+        
+          x
+          
+            i
+            1
+          
+        
+        ,
+        …
+        ,
+       
+
+In statistics, simple linear regression (SLR) is a linear regression model with a single explanatory variable. That is, it concerns two-dimensional sample points with one independent variable and one dependent variable (conventionally, the x and y coordinates in a Cartesian coordinate system) and finds a linear function (a non-vertical straight line) that, as accurately as possible, predicts the dependent variable values as a function of the independent variable.
+The adjective simple refers to the fact that the outcome variable is related to a single predictor.
+It is common to make the additional stipulation that the ordinary least squares (OLS) method should be used: the accuracy of each predicted value is measured by its squared residual (vertical distance between the point of the data set and the fitted line), and the goal is to make the sum of these squared deviations as small as possible. 
+In this case, the slope of the fitted line is equal to the correlation between y and x corrected by the ratio of standard deviations of these variables. The intercept of the fitted line is such that the line passes through the center of mass (x, y) of the data points.
+
+
+== Formulation and computation ==
+Consider the model function
+
+  
+    
+      
+        y
+        =
+        α
+        +
+        β
+        x
+        ,
+      
+    
+    {\displaystyle y=\alpha +\beta x,}
+  
+
+which describes a line with slope β and y-intercept α. In general, such a relationship may not hold exactly for the largely unobserved population of values of the independent and dependent variables; we call the unobserved deviations from the above equation the errors.   Suppose we observe n data pairs and call them {(xi, yi), i = 1, ..., n}. We can describe the underlying relationship between yi and xi involving this error term εi by
+
+  
+    
+      
+        
+          y
+          
+            i
+          
+        
+        =
+        α
+        +
+        β
+        
+          x
+          
+            i
+          
+        
+        +
+        
+          ε
+          
+            i
+          
+        
+        .
+      
+    
+    {\displaystyle y_{i}=\alpha +\beta x_{i}+\varepsilon _{i}.}
+  
+
+This relationship between the true (but unobserved) underlying parameters α and β and the data points is called a linear regression model.
+The goal is to find estimated values 
+  
+    
+      
+        
+          
+            
+              α
+              ^
+            
+          
+        
+      
+    
+    {\displaystyle {\widehat {\alpha }}}
+  
+ and 
+  
+    
+      
+        
+          
+            
+              β
+              ^
+            
+          
+        
+      
+    
+    {\displaystyle {\widehat {\beta }}}
+  
+ for the parameters α and β which would provide the "best" fit in some sense for the data points. As mentioned in the introduction, in this article the "best" fit will be understood as in the least-squares approach: a line that minimizes the sum of squared residuals (see also Errors and residuals) 
+  
+    
+      
+        
+          
+            
+              
+                ε
+                ^
+              
+            
+          
+          
+            i
+          
+        
+      
+    
+    {\displaystyle {\widehat {\varepsilon }}_{i}}
+  
+ (differences between actual and predicted values of the dependent variable y), each of which is given by, for any candidate parameter values 
+  
+    
+      
+        α
+      
+    
+    {\displaystyle \alpha }
+  
+ and 
+  
+    
+      
+        β
+      
+    
+    {\displaystyle \beta }
+  
+,
+
+  
+    
+      
+        
+          
+            
+              
+                ε
+                ^
+              
+            
+          
+          
+            i
+          
+        
+        =
+        
+          y
+          
+            i
+          
+        
+        −
+        α
+        −
+        β
+        
+          x
+          
+            i
+          
+        
+        .
+      
+    
+    {\displaystyle {\widehat {\varepsilon }}_{i}=y_{i}-\alpha -\beta x_{i}.}
+  
+
+In
+
+The general linear model or general multivariate regression model is a compact way of simultaneously writing several multiple linear regression models. In that sense it is not a separate statistical linear model. The various multiple linear regression models may be compactly written as
+
+  
+    
+      
+        
+          Y
+        
+        =
+        
+          X
+        
+        
+          B
+        
+        +
+        
+          U
+        
+        ,
+      
+    
+    {\displaystyle \mathbf {Y} =\mathbf {X} \mathbf {B} +\mathbf {U} ,}
+  
+
+where Y is a matrix with series of multivariate measurements (each column being a set of measurements on one of the dependent variables), X is a matrix of observations on independent variables that might be a design matrix (each column being a set of observations on one of the independent variables), B is a matrix containing parameters that are usually to be estimated and U is a matrix containing errors (noise). The errors are usually assumed to be uncorrelated across measurements, and follow a multivariate normal distribution. If the errors do not follow a multivariate normal distribution, generalized linear models may be used to relax assumptions about Y and U.
+
+The general linear model (GLM) encompasses several statistical models, including ANOVA, ANCOVA, MANOVA, MANCOVA, and ordinary linear regression. Within this framework, both the t-test and the F-test can be applied. The general linear model is a generalization of multiple linear regression to the case of more than one dependent variable. If Y, B, and U were column vectors, the matrix equation above would represent multiple linear regression.
+Hypothesis tests with the general linear model can be made in two ways: multivariate or as several independent univariate tests. In multivariate tests the columns of Y are tested together, whereas in univariate tests the columns of Y are tested independently, i.e., as multiple univariate tests with the same design matrix.
+
+
+== Comparison to multiple linear regression ==
+
+Multiple linear regression is a generalization of simple linear regression to the case of more than one independent variable, and a special case of general linear models, restricted to one dependent variable. The basic model for multiple linear regression is
+
+  
+    
+      
+        
+          Y
+          
+            i
+          
+        
+        =
+        
+          β
+          
+            0
+          
+        
+        +
+        
+          β
+          
+            1
+          
+        
+        
+          X
+          
+            i
+            1
+          
+        
+        +
+        
+          β
+          
+            2
+          
+        
+        
+          X
+          
+            i
+            2
+          
+        
+        +
+        …
+        +
+        
+          β
+          
+            p
+          
+        
+        
+          X
+          
+            i
+            p
+          
+        
+        +
+        
+          ϵ
+          
+            i
+          
+        
+      
+    
+    {\displaystyle Y_{i}=\beta _{0}+\beta _{1}X_{i1}+\beta _{2}X_{i2}+\ldots +\beta _{p}X_{ip}+\epsilon _{i}}
+  
+ or more compactly 
+  
+    
+      
+        
+          Y
+          
+            i
+          
+        
+        =
+        
+          β
+          
+            0
+          
+        
+        +
+        
+          ∑
+          
+            k
+            =
+            1
+          
+          
+            p
+          
+        
+        
+          
+            β
+            
+              k
+            
+          
+          
+            X
+            
+              i
+              k
+            
+          
+        
+        +
+        
+          ϵ
+          
+            i
+          
+        
+      
+    
+    {\displaystyle Y_{i}=\beta _{0}+\sum \limits _{k=1}^{p}{\beta _{k}X_{ik}}+\epsilon _{i}}
+  
+
+for each observation i = 1, ... , n.
+In the formula above we consider n observations of one dependent variable and p independent variables. Thus, Yi is the ith observati
+
+In statistics, a logistic model (or logit model) is a statistical model that models the log-odds of an event as a linear combination of one or more independent variables. In regression analysis, logistic regression (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations). In binary logistic regression there is a single binary dependent variable, coded by an indicator variable, where the two values are labeled "0" and "1", while the independent variables can each be a binary variable (two classes, coded by an indicator variable) or a continuous variable (any real value). The corresponding probability of the value labeled "1" can vary between 0 (certainly the value "0") and 1 (certainly the value "1"), hence the labeling; the function that converts log-odds to probability is the logistic function, hence the name. The unit of measurement for the log-odds scale is called a logit, from logistic unit, hence the alternative names. See § Background and § Definition for formal mathematics, and § Example for a worked example.
+Binary variables are widely used in statistics to model the probability of a certain class or event taking place, such as the probability of a team winning, of a patient being healthy, etc. (see § Applications), and the logistic model has been the most commonly used model for binary regression since about 1970. Binary variables can be generalized to categorical variables when there are more than two possible values (e.g. whether an image is of a cat, dog, lion, etc.), and the binary logistic regression generalized to multinomial logistic regression. If the multiple categories are ordered, one can use the ordinal logistic regression (for example the proportional odds ordinal logistic model). See § Extensions for further extensions. The logistic regression model itself simply models probability of output in terms of input and does not perform statistical classification (it is not a classifier), though it can be used to make a classifier, for instance by choosing a cutoff value and classifying inputs with probability greater than the cutoff as one class, below the cutoff as the other; this is a common way to make a binary classifier.
+Analogous linear models for binary variables with a different sigmoid function instead of the logistic function (to convert the linear combination to a probability) can also be used, most notably the probit model; see § Alternatives. The defining characteristic of the logistic model is that increasing one of the independent variables multiplicatively scales the odds of the given outcome at a constant rate, with each independent variable having its own parameter; for a binary dependent variable this generalizes the odds ratio. More abstractly, the logistic function is the natural parameter for the Bernoulli distribution, and in this sense is the "simplest" way to convert a real number to a probability.
+The parameters of a logistic regression are most commonly estimated by maximum-likelihood estimation (MLE). This does not have a closed-form expression, unlike linear least squares; see § Model fitting. Logistic regression by MLE plays a similarly basic role for binary or categorical responses as linear regression by ordinary least squares (OLS) plays for scalar responses: it is a simple, well-analyzed baseline model; see § Comparison with linear regression for discussion. The logistic regression as a general statistical model was originally developed and popularized primarily by Joseph Berkson, beginning in Berkson (1944), where he coined "logit"; see § History.
+
+
+== Applications ==
+
+
+=== General ===
+Logistic regression is used in various fields, including machine learning, most medical fields, and social sciences. For example, the Trauma and Injury Severity Score (TRISS), which is widely used to predict mortality in injured patients, was originally developed by Boyd et al. using logistic regression.  Many other medical s
+
+In statistical modeling, regression analysis is a statistical method for estimating the relationship between a dependent variable (often called the outcome or response variable, or a label in machine learning parlance) and one or more independent variables (often called regressors, predictors, covariates, explanatory variables or features).
+The most common form of regression analysis is linear regression, in which one finds the line (or a more complex linear combination) that most closely fits the data according to a specific mathematical criterion. For example, the method of ordinary least squares computes the unique line (or hyperplane) that minimizes the sum of squared differences between the true data and that line (or hyperplane). For specific mathematical reasons (see linear regression), this allows the researcher to estimate the conditional expectation (or population average value) of the dependent variable when the independent variables take on a given set of values. Less common forms of regression use slightly different procedures to estimate alternative location parameters (e.g., quantile regression or Necessary Condition Analysis) or estimate the conditional expectation across a broader collection of non-linear models (e.g., nonparametric regression).
+Regression analysis is primarily used for two conceptually distinct purposes. First, regression analysis is widely used for prediction and forecasting, where its use has substantial overlap with the field of machine learning. Second, in some situations regression analysis can be used to infer causal relationships between the independent and dependent variables. Importantly, regressions by themselves only reveal relationships between a dependent variable and a collection of independent variables in a fixed dataset. To use regressions for prediction or to infer causal relationships, respectively, a researcher must carefully justify why existing relationships have predictive power for a new context or why a relationship between two variables has a causal interpretation. The latter is especially important when researchers hope to estimate causal relationships using observational data.
+
+
+== History ==
+The earliest regression form was seen in Isaac Newton's work in 1700 while studying equinoxes, being credited with introducing "an embryonic linear regression analysis" as "not only did he perform the averaging of a set of data, 50 years before Tobias Mayer, but by summing the residuals to zero he forced the regression line to pass through the average point. He also distinguished between two inhomogeneous sets of data and might have thought of an optimal solution in terms of bias, though not in terms of effectiveness." He previously used an averaging method in his 1671 work on Newton's rings, which was unprecedented at the time. 
+The method of least squares was published by Legendre in 1805, and by Gauss in 1809. Legendre and Gauss both applied the method to the problem of determining, from astronomical observations, the orbits of bodies about the Sun (mostly comets, but also later the then newly discovered minor planets). Gauss published a further development of the theory of least squares in 1821, including a version of the Gauss–Markov theorem.
+The term "regression" was coined by Francis Galton in the 19th century to describe a biological phenomenon. The phenomenon was that the heights of descendants of tall ancestors tend to regress down towards a normal average (a phenomenon also known as regression toward the mean).
+For Galton, regression had only this biological meaning, but his work was later extended by Udny Yule and Karl Pearson to a more general statistical context. In the work of Yule and Pearson, the joint distribution of the response and explanatory variables is assumed to be Gaussian. This assumption was weakened by R.A. Fisher in his works of 1922 and 1925. Fisher assumed that the conditional distribution of the response variable is Gaussian, but the joint dist
+
+A car, or an automobile, is a motor vehicle with wheels. Most definitions of cars state that they run primarily on roads, seat 1-8 people, have four wheels, and mainly transport people rather than cargo. There are over 1.6 billion cars in use worldwide as of  2025.
+The French inventor Nicolas-Joseph Cugnot built the first steam-powered road vehicle in 1769, while the Swiss inventor François Isaac de Rivaz designed and constructed the first internal combustion-powered automobile in 1808. The modern car—a practical, marketable automobile for everyday use—was invented in 1886, when the German inventor Carl Benz patented his Benz Patent-Motorwagen. Commercial cars became widely available during the 20th century. The 1901 Oldsmobile Curved Dash and the 1908 Ford Model T, both American cars, are widely considered the first mass-produced and mass-affordable cars, respectively. Cars were rapidly adopted in the US, where they replaced horse-drawn carriages. In Europe and other parts of the world, demand for automobiles did not increase until after World War II. In the 21st century, car usage is still increasing rapidly, especially in China, India, and other newly industrialised countries.
+Cars have controls for driving, parking, passenger comfort, and a variety of lamps. Over the decades, additional features and controls have been added to vehicles, making them progressively more complex. These include rear-reversing cameras, air conditioning, navigation systems, and in-car entertainment. Most cars in use in the early 2020s are propelled by an internal combustion engine, fueled by the combustion of fossil fuels. Electric cars, which were invented early in the history of the car, became commercially available in the 2000s and widespread in the 2020s. The transition from fossil-fuel-powered cars to electric cars is a central feature of most climate change mitigation scenarios.
+There are costs and benefits to car use. The costs to the individual include acquiring the vehicle, interest payments (if the car is financed), repairs and maintenance, fuel, depreciation, driving time, parking fees, taxes, and insurance. The costs to society include resources used to produce cars and fuel, maintaining roads, land-use, road congestion, air pollution, noise pollution, public health, and disposing of the vehicle at the end of its life. Traffic collisions are the largest cause of injury-related deaths worldwide. Personal benefits include on-demand transportation, mobility, independence, and convenience. Societal benefits include economic benefits, such as job and wealth creation from the automotive industry, transportation provision, and societal wellbeing from leisure and travel opportunities. People's ability to move flexibly from place to place has far-reaching implications for society.
+
+
+== Etymology ==
+The English word car is believed to originate from Latin carrus/carrum "wheeled vehicle" or (via Old North French) Middle English carre "two-wheeled cart", both of which in turn derive from Gaulish karros "chariot". It originally referred to any wheeled horse-drawn vehicle, such as a cart, carriage, or wagon. The word also occurs in other Celtic languages.
+"Motor car", attested from 1895, is the usual formal term in British English. "Autocar", a variant likewise attested from 1895 and literally meaning "self-propelled car", is now considered archaic. "Horseless carriage" is attested from 1895.
+"Automobile", a classical compound derived from Ancient Greek autós (αὐτός) "self" and Latin mobilis "movable", entered English from French and was first adopted by the Automobile Club of Great Britain in 1897. It fell out of favour in Britain and is now used chiefly in North America, where the abbreviated form "auto" commonly appears as an adjective in compound formations like "auto industry" and "auto mechanic".
+
+
+== History ==
+
+In 1649, Hans Hautsch of Nuremberg built a clockwork-driven carriage. The first steam-powered vehicle was designed by Ferdinand Ve
+
+A car, or an automobile, is a motor vehicle with wheels. Most definitions of cars state that they run primarily on roads, seat 1-8 people, have four wheels, and mainly transport people rather than cargo. There are over 1.6 billion cars in use worldwide as of  2025.
+The French inventor Nicolas-Joseph Cugnot built the first steam-powered road vehicle in 1769, while the Swiss inventor François Isaac de Rivaz designed and constructed the first internal combustion-powered automobile in 1808. The modern car—a practical, marketable automobile for everyday use—was invented in 1886, when the German inventor Carl Benz patented his Benz Patent-Motorwagen. Commercial cars became widely available during the 20th century. The 1901 Oldsmobile Curved Dash and the 1908 Ford Model T, both American cars, are widely considered the first mass-produced and mass-affordable cars, respectively. Cars were rapidly adopted in the US, where they replaced horse-drawn carriages. In Europe and other parts of the world, demand for automobiles did not increase until after World War II. In the 21st century, car usage is still increasing rapidly, especially in China, India, and other newly industrialised countries.
+Cars have controls for driving, parking, passenger comfort, and a variety of lamps. Over the decades, additional features and controls have been added to vehicles, making them progressively more complex. These include rear-reversing cameras, air conditioning, navigation systems, and in-car entertainment. Most cars in use in the early 2020s are propelled by an internal combustion engine, fueled by the combustion of fossil fuels. Electric cars, which were invented early in the history of the car, became commercially available in the 2000s and widespread in the 2020s. The transition from fossil-fuel-powered cars to electric cars is a central feature of most climate change mitigation scenarios.
+There are costs and benefits to car use. The costs to the individual include acquiring the vehicle, interest payments (if the car is financed), repairs and maintenance, fuel, depreciation, driving time, parking fees, taxes, and insurance. The costs to society include resources used to produce cars and fuel, maintaining roads, land-use, road congestion, air pollution, noise pollution, public health, and disposing of the vehicle at the end of its life. Traffic collisions are the largest cause of injury-related deaths worldwide. Personal benefits include on-demand transportation, mobility, independence, and convenience. Societal benefits include economic benefits, such as job and wealth creation from the automotive industry, transportation provision, and societal wellbeing from leisure and travel opportunities. People's ability to move flexibly from place to place has far-reaching implications for society.
+
+
+== Etymology ==
+The English word car is believed to originate from Latin carrus/carrum "wheeled vehicle" or (via Old North French) Middle English carre "two-wheeled cart", both of which in turn derive from Gaulish karros "chariot". It originally referred to any wheeled horse-drawn vehicle, such as a cart, carriage, or wagon. The word also occurs in other Celtic languages.
+"Motor car", attested from 1895, is the usual formal term in British English. "Autocar", a variant likewise attested from 1895 and literally meaning "self-propelled car", is now considered archaic. "Horseless carriage" is attested from 1895.
+"Automobile", a classical compound derived from Ancient Greek autós (αὐτός) "self" and Latin mobilis "movable", entered English from French and was first adopted by the Automobile Club of Great Britain in 1897. It fell out of favour in Britain and is now used chiefly in North America, where the abbreviated form "auto" commonly appears as an adjective in compound formations like "auto industry" and "auto mechanic".
+
+
+== History ==
+
+In 1649, Hans Hautsch of Nuremberg built a clockwork-driven carriage. The first steam-powered vehicle was designed by Ferdinand Ve
+
+The Cars were an American rock band formed in Boston in 1976. Emerging from the new wave scene in the late 1970s, they consisted of Ric Ocasek (rhythm guitar), Benjamin Orr (bass guitar), Elliot Easton (lead guitar), Greg Hawkes (keyboards) and David Robinson (drums). Ocasek and Orr shared lead vocals. Ocasek was the band's leader and took sole songwriting credits for practically every song, leading to friction in the band later.
+The Cars were at the forefront of the merger of 1970s guitar-orientated rock with the new synthesizer-oriented pop that became popular in the early 1980s. Music critic Robert Palmer of The New York Times and Rolling Stone wrote that the band  "...have taken some important but disparate contemporary trends - punk minimalism, the labyrinthine synthesizer and guitar textures of art rock, the '50s rockabilly revival and the melodious terseness of power pop - and mixed them into a personal and appealing blend".
+In 1978, the Cars were named Best New Artist in a readers' poll conducted by Rolling Stone. The band's 1978 debut album, The Cars, sold six million copies and appeared on the Billboard 200 album chart for 139 weeks. The Cars had four Top 10 hits: "Shake It Up" (1981), "You Might Think" (1984), "Drive" (1984), and "Tonight She Comes" (1985). The band won Video of the Year for "You Might Think" at the first MTV Video Music Awards in 1984.
+The Cars disbanded in 1988. During this first hiatus, Orr died of pancreatic cancer in 2000. In 2007, Easton and Hawkes joined Todd Rundgren and others to form the offshoot band The New Cars. The surviving original members of the Cars reunited to record the band's seventh and final album, Move Like This (2011), toured in support of the album, and once again went on hiatus. In April 2018, the Cars were inducted into the Rock and Roll Hall of Fame, and the band reunited to perform at the induction ceremony. This became the band's final performance before Ocasek's death the following year.
+
+
+== History ==
+
+
+=== Early years ===
+Before forming The Cars, the band's members performed together in several groups. Ric Ocasek and Benjamin Orr met in Cleveland, Ohio, in the 1960s after Ocasek saw Orr performing with his band, the Grasshoppers, on The Big 5 Show, a local musical variety program. The two were members of various bands in Columbus, Ohio, and Ann Arbor, Michigan, before moving to Boston in the early 1970s. In Boston, Ocasek and Orr, along with lead guitarist Jas Goodkind, formed a Crosby, Stills and Nash-style folk rock band called Milkwood. In 1972, they released an album titled How's the Weather through Paramount Records that failed to chart.
+After Milkwood, Ocasek and Orr formed the group Richard and the Rabbits, a name suggested by Jonathan Richman. The band included Greg Hawkes, who had studied at the Berklee School of Music and had played saxophone on Milkwood's album. Hawkes left to tour with Martin Mull and His Fabulous Furniture, a musical comedy act in which Mull played a variety of instruments. Ocasek and Orr then performed as an acoustic duo called Ocasek and Orr at the Idler Coffeehouse in Cambridge, Massachusetts. Some of the songs they played became early Cars songs.
+Ocasek and Orr later teamed with guitarist Elliot Easton (who had also studied at Berklee) in the band Cap'n Swing. The band also featured drummer Glenn Evans, later followed by Kevin Robichaud, Danny Schliftman on keyboard, and Todd Roberto on bass, whose jazzy playing clashed with Ocasek's preference for a rock-and-roll sound. Orr was the lead vocalist and did not play an instrument. Cap'n Swing soon came to the attention of WBCN disc jockey Maxanne Sartori, who began playing songs from their demo tape on her show.
+After being rejected by several record labels, Ocasek fired the bass player, keyboardist, and drummer and resolved to form a band better fitting his style of writing. Orr took bass guitar, and Robichaud was replaced by David Robinson, best known for his career with the Modern 
+
+Cars is a Pixar media franchise that is owned by The Walt Disney Company. Created by John Lasseter, Joe Ranft and Jorgen Klubien, It began in 2006 with the release of the animated feature film of the same name, The film was followed by the sequels Cars 2 (2011) and Cars 3 (2017). The now-defunct Disneytoon Studios produced the two spin-off films Planes (2013) and Planes: Fire & Rescue (2014).
+The first two Cars films were directed by Lasseter, then-chief creative officer of Pixar, Walt Disney Animation Studios, and Disneytoon Studios, while Cars 3 was directed by Brian Fee, a storyboard artist on the previous installments. Lasseter served as executive producer of Cars 3 and the Planes films. Together, all three Cars films have accrued over $1.4 billion in box office revenue worldwide while the franchise has amassed over $10 billion in merchandising sales within its first five years.
+
+
+== History ==
+The Cars franchise began with the original Cars. At the time, it was Pixar's least well received film by reviewers.
+The short Mater and the Ghostlight was released as an extra on the Cars DVD on November 7, 2006. A series of shorts called Cars Toons were produced and aired on the Disney Channel to keep interest up. The brand had sold nearly $10 billion in merchandise by the time of the release of Cars 2 in 2011.
+In 2007, Cars Four Wheels Rally ride opened at Walt Disney Studios Park.
+In the summer of 2012, the 12-acre Cars Land theme area opened at Disney California Adventure in Anaheim as the main component of $1-billion park renovation.
+A third film, Cars 3, was announced on October 8, 2015, and was released on June 16, 2017.
+
+
+== Cars film series ==
+
+
+=== Cars (2006) ===
+
+Cars is the seventh Pixar film. The story is about rookie race car Lightning McQueen (Owen Wilson), who gets lost on the way to California for a tiebreaker race in the Piston Cup, a famous race worldwide, and ends up in a little town called Radiator Springs on Route 66, that had been bypassed and forgotten when Interstate 40 was built. He accidentally wrecks the road and is sentenced to fix it. During his time there, he meets Mater (Larry the Cable Guy), who becomes his best friend, and falls in love with Sally (Bonnie Hunt). He also comes across Doc Hudson (Paul Newman), who used to be a famous racecar called the Hudson Hornet until a career-ending crash in 1954, and who resents Lightning for reminding him of his own past.
+After Lightning fixes the road, Doc secretly alerts the media about Lightning's presence to get rid of him, but Sally makes Doc realize how much Lightning has helped Radiator Springs. Doc convinces most of the Radiator Springs residents to become Lightning's pit crew, and reassumes his Hudson Hornet identity and acts as Lightning's crew chief. Lightning is about to win the race, but helps The King (Richard Petty) cross the finish line after Chick Hicks (Michael Keaton) causes him to crash. Chick wins the Piston Cup after being in third on the last lap, but is later booed by everyone, while Lightning receives praise for his sportsmanship.
+Despite his loss, Lightning is offered to be the new face and sponsor of Dinoco, but he declines and decides to stay with Rust-eze, his current sponsor. He does, however, arrange for Mater to ride in the Dinoco helicopter just as he promised. The film ends with Lightning setting up his racing headquarters in Radiator Springs, thereby putting it back on the map.
+
+
+=== Cars 2 (2011) ===
+
+Cars 2 is the twelfth Pixar film. The story starts with Lightning McQueen competing in the World Grand Prix, organized by Sir Miles Axlerod (Eddie Izzard), a three-race event taking place in three countries: Japan, Italy, and England, with his racing rival being Italian formula car Francesco Bernoulli (John Turturro).
+Along the way, Mater is mistaken for an American spy by British spy Finn McMissile (Michael Caine), and falls in love with junior agent Holley Shiftwell (Emily Mortimer). The three uncover a plot to sabotage the W
+
+Cars is a 2006 American animated sports comedy film produced by Pixar Animation Studios for Walt Disney Pictures. Directed by John Lasseter, who co-wrote it with Joe Ranft, Dan Fogelman, Kiel Murray, Phil Lorin and Jorgen Klubien, the film stars Paul Newman and Owen Wilson, with an ensemble voice cast consisting of Bonnie Hunt, Larry the Cable Guy, Tony Shalhoub, Cheech Marin, Michael Wallis, George Carlin, Paul Dooley, Jenifer Lewis, Guido Quaroni, Michael Keaton, Katherine Helmond, John Ratzenberger, and Richard Petty.
+Set in a world populated entirely by anthropomorphic vehicles, the film follows a young self-obsessed racecar named Lightning McQueen (Wilson) who, on the way to the most important race of his life for the Piston Cup, becomes stranded in a forgotten town along U.S. Route 66 called Radiator Springs, where he learns about friendship and begins to reevaluate his priorities.
+Development for Cars started in 1998 following discussions between Lasseter and Klubien after production of A Bug's Life had wrapped. Klubien began to develop a new script titled The Yellow Car, which was about an electric car living in a gas-guzzling world. Shortly after, production was resumed with major script changes. The film was inspired by Lasseter's experiences on a cross-country road trip. Randy Newman composed the film's score, while artists Sheryl Crow, Rascal Flatts, John Mayer, and Brad Paisley contributed to the film's soundtrack. Cars ultimately served as the final film independently produced by Pixar after its purchase by Disney in January 2006.
+Cars premiered on May 26, 2006, at Lowe's Motor Speedway in Concord, North Carolina and was theatrically released in the United States on June 9 to generally positive reviews and commercial success, grossing $462 million worldwide against a budget of $120 million, becoming the sixth-highest-grossing film of 2006. It received two nominations at the 79th Academy Awards, including Best Animated Feature, but lost to Happy Feet (but won both the Annie Award for Best Animated Feature and the Golden Globe Award for Best Animated Feature Film). The film was dedicated to Ranft, who died in a car crash during the film's production.
+The success of Cars launched a multimedia franchise that includes two sequels: Cars 2 (2011) and Cars 3 (2017), as well as two spin-off films produced by Disneytoon Studios: Planes (2013) and Planes: Fire and Rescue (2014).
+
+
+== Plot ==
+In a world populated by anthropomorphic vehicles, the Dinoco 400 race is the last of the Piston Cup season. Heading into the event, retiring seven-time champion Strip "The King" Weathers, the cunning consistent runner-up Chick Hicks, and the talented and arrogant rookie Lightning McQueen are all tied for the season points lead. Lightning is desperate to win and leave his unglamorous Rust-eze sponsorship for the prestigious Dinoco, and struggles with teamwork due to his self-centered attitude.
+At the end of the high-stakes race, Lightning squanders his lead by refusing to change tires in multiple pit stops, causing his rear tires to blow out before he can win. The race ends in a three-way tie between the leaders, setting the stage for a decisive tiebreaker race at Los Angeles International Speedway in one week. After the race, Lightning rushes through the night on the interstate to reach California inside his transport truck Mack. A mishap with some street racers culminates in Lightning stranded alone in the rundown desert town of Radiator Springs, Arizona. He inadvertently damages the main road and is sentenced to a community service assignment of repaving it under the supervision of the town's judge Doc Hudson, who is prejudiced against Lightning for being a racecar.
+Lightning repaves the road shoddily in a rush to leave. Doc challenges him to a race for his freedom, on the condition he starts over from scratch if he loses. The overconfident Lightning, having never raced on a dirt road before, spins out on a turn and crashes into a cac
+

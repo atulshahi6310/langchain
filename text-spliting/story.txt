@@ -1,0 +1,41 @@
+From Wikipedia, the free encyclopedia
+The Digital Signature Algorithm (DSA) is a public-key cryptosystem and Federal Information Processing Standard for digital signatures, based on the mathematical concept of modular exponentiation and the discrete logarithm problem. In a digital signature system, there is a keypair involved, consisting of a private and a public key. In this system a signing entity that declared their public key can generate a signature using their private key, and a verifier can assert the source if it verifies the signature correctly using the declared public key. DSA is a variant of the Schnorr and ElGamal signature schemes.[1]: 486 
+
+The National Institute of Standards and Technology (NIST) proposed DSA for use in their Digital Signature Standard (DSS) in 1991, and adopted it as FIPS 186 in 1994.[2] Five revisions to the initial specification have been released. The newest specification is: FIPS 186-5 from February 2023.[3] DSA is patented but NIST has made this patent available worldwide royalty-free. Specification FIPS 186-5 indicates DSA will no longer be approved for digital signature generation, but may be used to verify signatures generated prior to the implementation date of that standard.
+
+Overview
+The DSA works in the framework of public-key cryptosystems and is based on the algebraic properties of modular exponentiation, together with the discrete logarithm problem, which is considered to be computationally intractable. The algorithm uses a key pair consisting of a public key and a private key. The private key is used to generate a digital signature for a message, and such a signature can be verified by using the signer's corresponding public key. The digital signature provides message authentication (the receiver can verify the origin of the message), integrity (the receiver can verify that the message has not been modified since it was signed) and non-repudiation (the sender cannot falsely claim that they have not signed the message).
+
+History
+In 1982, the U.S government solicited proposals for a public key signature standard. In August 1991 the National Institute of Standards and Technology (NIST) proposed DSA for use in their Digital Signature Standard (DSS). Initially there was significant criticism, especially from software companies that had already invested effort in developing digital signature software based on the RSA cryptosystem.[1]: 484  Nevertheless, NIST adopted DSA as a Federal standard (FIPS 186) in 1994. Five revisions to the initial specification have been released: FIPS 186–1 in 1998,[4] FIPS 186–2 in 2000,[5] FIPS 186–3 in 2009,[6] FIPS 186–4 in 2013,[3] and FIPS 186–5 in 2023.[7] Standard FIPS 186-5 forbids signing with DSA, while allowing verification of signatures generated prior to the implementation date of the standard as a document. It is to be replaced by newer signature schemes such as EdDSA.[8]
+
+DSA is covered by U.S. patent 5,231,668, filed July 26, 1991 and now expired, and attributed to David W. Kravitz,[9] a former NSA employee. This patent was given to "The United States of America as represented by the Secretary of Commerce, Washington, D.C.", and NIST has made this patent available worldwide royalty-free.[10] Claus P. Schnorr claims that his U.S. patent 4,995,082 (also now expired) covered DSA; this claim is disputed.[11]
+
+In 1993, Dave Banisar managed to get confirmation, via a FOIA request, that the DSA algorithm hasn't been designed by the NIST, but by the NSA.[12]
+
+OpenSSH announced that DSA was going to be removed in 2025. The support was entirely dropped in version 10.0.[13][14]
+
+Operation
+The DSA algorithm involves four operations: key generation (which creates the key pair), key distribution, signing and signature verification.
+
+1. Key generation
+Key generation has two phases. The first phase is a choice of algorithm parameters which may be shared between different users of the system, while the second phase computes a single key pair for one user.
+
+Parameter generation
+Choose an approved cryptographic hash function 
+H
+{\displaystyle H} with output length 
+|
+H
+|
+{\displaystyle |H|} bits. In the original DSS, 
+H
+{\displaystyle H} was always SHA-1, but the stronger SHA-2 hash functions are approved for use in the current DSS.[3][15] If 
+|
+H
+|
+{\displaystyle |H|} is greater than the modulus length 
+N
+{\displaystyle N}, only the leftmost 
+N
+{\displaystyle N} bits of the hash output are used.

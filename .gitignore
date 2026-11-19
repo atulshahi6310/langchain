@@ -1,0 +1,95 @@
+# =====================================================================
+# Jupyter Notebooks (Ignore all .ipynb files across all directories)
+# =====================================================================
+*.ipynb
+**/*.ipynb
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# =====================================================================
+# HTML Notes & Interactive Web Artifacts (Local only, not tracked)
+# =====================================================================
+*.html
+**/*.html
+langchain_notes.html
+
+
+# =====================================================================
+# Byte-compiled / optimized / DLL files
+# =====================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# =====================================================================
+# Environment variables & API credentials (NEVER commit secrets)
+# =====================================================================
+.env
+.env.*
+*.env
+.envrc
+.secrets
+.secrets.*
+
+# =====================================================================
+# Virtual environments
+# =====================================================================
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.conda/
+conda/
+.pixi/
+
+# =====================================================================
+# IDEs & Editor configurations
+# =====================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+tempCodeRunnerFile.py
+
+# =====================================================================
+# Local Vector Databases & Runtime Index Stores (Auto-generated)
+# =====================================================================
+vector_store/chroma_db/chroma_db/
+**/chroma_db/chroma_db/
+*.sqlite3
+*.sqlite3-journal
+faiss_index/
+**/faiss_index/
+*.faiss
+*.pkl
+*.bin
+
+# =====================================================================
+# Logs, Scratches & Temporary files
+# =====================================================================
+*.log
+web_doc.txt
+**/web_doc.txt
+scratch/
+
+# =====================================================================
+# Operating System files
+# =====================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =====================================================================
+# Streamlit configuration & secrets
+# =====================================================================
+.streamlit/secrets.toml
+
+langchain_notes.html
